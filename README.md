@@ -81,13 +81,11 @@ Or use the guided script:
 
 ### 2. Seed Sample Data
 
-Run against your deployed SQL database (via Azure Portal Query Editor or `sqlcmd`):
+```powershell
+.\scripts\azure\04-seed-sql-data.ps1
+```
 
-```
-scripts/sql/01-create-schema.sql
-scripts/sql/02-insert-sample-data.sql
-scripts/sql/03-verify-data.sql
-```
+> This script temporarily enables public access on the SQL server, seeds the ContosoRetail database with sample data (schema + rows + verification), then re-disables public access and removes the firewall rule.
 
 ### 3. Configure Power BI (Manual Steps)
 
@@ -128,6 +126,7 @@ scripts/
     01-deploy-infrastructure.ps1    # Deploy Bicep
     02-configure-sql-network.ps1    # Verify/lock SQL networking
     03-validate-deployment.ps1      # Post-deploy validation
+    04-seed-sql-data.ps1            # Seed SQL data (temp opens public access)
     99-cleanup.ps1                  # Tear down everything
   sql/
     01-create-schema.sql            # Create tables

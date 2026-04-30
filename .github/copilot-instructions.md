@@ -43,6 +43,7 @@ scripts/
     01-deploy-infrastructure.ps1    # Deploys Bicep via az deployment
     02-configure-sql-network.ps1    # Post-deploy SQL network lockdown
     03-validate-deployment.ps1      # DNS resolution + connectivity checks
+    04-seed-sql-data.ps1            # Seed SQL data (temp opens public access)
     99-cleanup.ps1                  # Delete RG + verify removal
   sql/
     01-create-schema.sql            # Demo tables

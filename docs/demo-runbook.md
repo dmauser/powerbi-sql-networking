@@ -15,7 +15,7 @@
 Before starting the demo, verify **all** of the following:
 
 - [ ] Azure resources deployed and healthy (resource group `pbi-pl-demo-rg`)
-- [ ] SQL database `ContosoRetail` populated with sample data (Customers, Products, Orders, OrderItems)
+- [ ] SQL database `ContosoRetail` populated with sample data — run `.\scripts\azure\04-seed-sql-data.ps1` (Customers, Products, Orders, OrderItems)
 - [ ] Private Endpoint status is **Approved** (not Pending)
 - [ ] Private DNS Zone `privatelink.database.windows.net` has A record pointing to PE IP
 - [ ] VNet Data Gateway shows **Online** in Power BI Service → Settings → Manage gateways
