@@ -1,173 +1,196 @@
-<mxfile host="app.diagrams.net" modified="2024-01-01T00:00:00.000Z" agent="draw.io" version="22.1.0" type="device">
+<mxfile host="app.diagrams.net" modified="2025-01-01T00:00:00.000Z" agent="draw.io" version="24.0.0" type="device">
   <diagram id="pbi-sql-private-link" name="Power BI → Azure SQL via Private Link">
-    <mxGraphModel dx="1200" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1200" pageHeight="900" math="0" shadow="0">
+    <mxGraphModel dx="1400" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1400" pageHeight="900" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
 
         <!-- ===================== TITLE ===================== -->
         <mxCell id="title" value="&lt;b&gt;Power BI → Azure SQL via Private Link&lt;/b&gt;" style="text;html=1;fontSize=20;fontColor=#333333;align=center;verticalAlign=middle;" vertex="1" parent="1">
-          <mxGeometry x="300" y="10" width="600" height="40" as="geometry" />
+          <mxGeometry x="400" y="10" width="600" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="subtitle" value="Resource Group: &lt;b&gt;rg-pbi-pl-demo-2 (centralus)&lt;/b&gt;" style="text;html=1;fontSize=12;fontColor=#666666;align=center;verticalAlign=middle;" vertex="1" parent="1">
-          <mxGeometry x="380" y="45" width="440" height="25" as="geometry" />
+        <mxCell id="subtitle" value="Resource Group: &lt;b&gt;rg-pbi-pl-demo-2&lt;/b&gt; (centralus)" style="text;html=1;fontSize=12;fontColor=#888888;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="450" y="45" width="500" height="25" as="geometry" />
         </mxCell>
 
-        <!-- ===================== POWER BI SERVICE (external cloud) ===================== -->
-        <mxCell id="pbi-cloud" value="" style="shape=mxgraph.azure.cloud;fillColor=#FFD966;strokeColor=#D6B656;opacity=90;" vertex="1" parent="1">
-          <mxGeometry x="510" y="85" width="80" height="50" as="geometry" />
+        <!-- ===================== POWER BI SERVICE ===================== -->
+        <mxCell id="pbi-icon" value="" style="shape=image;aspect=fixed;image=https://raw.githubusercontent.com/mingramm/Azure-Architecture-Icons/refs/heads/main/Icons/Power%20Platform/Power%20BI.svg;fillColor=#FFFFFF;strokeColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="676" y="80" width="48" height="48" as="geometry" />
         </mxCell>
-        <mxCell id="pbi-label" value="&lt;b&gt;Power BI Service&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;(Microsoft Cloud)&lt;/font&gt;" style="text;html=1;fontSize=13;fontColor=#7F6000;align=center;verticalAlign=top;" vertex="1" parent="1">
-          <mxGeometry x="470" y="138" width="160" height="40" as="geometry" />
+        <mxCell id="pbi-label" value="&lt;b&gt;Power BI Service&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;(Microsoft Cloud)&lt;/font&gt;" style="text;html=1;fontSize=12;fontColor=#333333;align=center;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="620" y="132" width="160" height="35" as="geometry" />
         </mxCell>
 
         <!-- ===================== AZURE VNET CONTAINER ===================== -->
-        <mxCell id="vnet" value="&lt;b&gt;Azure VNet&lt;/b&gt;: pbi-pl-demo-vnet&lt;br&gt;10.0.0.0/16" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;strokeWidth=2;verticalAlign=top;fontSize=12;fontColor=#333333;arcSize=6;dashed=0;align=left;spacingLeft=10;spacingTop=5;" vertex="1" parent="1">
-          <mxGeometry x="160" y="230" width="880" height="310" as="geometry" />
+        <mxCell id="vnet-box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F4FD;strokeColor=#0078D4;strokeWidth=2;dashed=1;dashPattern=8 4;arcSize=4;" vertex="1" parent="1">
+          <mxGeometry x="160" y="230" width="1080" height="320" as="geometry" />
+        </mxCell>
+        <mxCell id="vnet-icon" value="" style="shape=mxgraph.azure2.networking.virtual_networks;fillColor=#FFFFFF;strokeColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="175" y="238" width="36" height="36" as="geometry" />
+        </mxCell>
+        <mxCell id="vnet-label" value="&lt;b&gt;Azure VNet&lt;/b&gt;: pbi-pl-demo-vnet · 10.0.0.0/16" style="text;html=1;fontSize=12;fontColor=#0078D4;align=left;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="215" y="243" width="350" height="26" as="geometry" />
         </mxCell>
 
         <!-- ===== GATEWAY SUBNET ===== -->
-        <mxCell id="gw-subnet" value="&lt;b&gt;gateway subnet&lt;/b&gt;&lt;br&gt;10.0.2.0/24&lt;br&gt;&lt;font style=&quot;font-size:9px;color:#555&quot;&gt;Delegation: Microsoft.PowerPlatform/vnetaccesslinks&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F0FE;strokeColor=#6c8ebf;strokeWidth=1.5;verticalAlign=top;fontSize=11;fontColor=#333333;arcSize=8;dashed=1;dashPattern=5 3;align=left;spacingLeft=8;spacingTop=4;" vertex="1" parent="1">
-          <mxGeometry x="180" y="275" width="380" height="245" as="geometry" />
+        <mxCell id="gw-subnet" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F8F9FA;strokeColor=#5EA4E0;strokeWidth=1.5;dashed=1;dashPattern=5 3;arcSize=6;" vertex="1" parent="1">
+          <mxGeometry x="190" y="290" width="440" height="240" as="geometry" />
+        </mxCell>
+        <mxCell id="gw-subnet-icon" value="" style="shape=mxgraph.azure2.networking.subnet;fillColor=#FFFFFF;strokeColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="205" y="298" width="28" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="gw-subnet-label" value="&lt;b&gt;gateway subnet&lt;/b&gt; · 10.0.2.0/24&lt;br&gt;&lt;font style=&quot;font-size:9px;color:#888&quot;&gt;Delegation: Microsoft.PowerPlatform/vnetaccesslinks&lt;/font&gt;" style="text;html=1;fontSize=11;fontColor=#333333;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="237" y="298" width="370" height="34" as="geometry" />
         </mxCell>
 
-        <!-- VNet Data Gateway icon -->
-        <mxCell id="vnet-gw" value="" style="shape=mxgraph.azure.vpn_gateway;fillColor=#FFD966;strokeColor=#D6B656;" vertex="1" parent="1">
-          <mxGeometry x="330" y="355" width="50" height="60" as="geometry" />
+        <!-- VNet Data Gateway icon (azure2) -->
+        <mxCell id="vnet-gw" value="" style="shape=mxgraph.azure2.networking.virtual_network_gateways;fillColor=#FFFFFF;strokeColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="386" y="370" width="48" height="48" as="geometry" />
         </mxCell>
-        <mxCell id="vnet-gw-label" value="&lt;b&gt;VNet Data Gateway&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;(Power Platform managed)&lt;/font&gt;" style="text;html=1;fontSize=12;fontColor=#7F6000;align=center;verticalAlign=top;" vertex="1" parent="1">
-          <mxGeometry x="265" y="420" width="180" height="40" as="geometry" />
+        <mxCell id="vnet-gw-label" value="&lt;b&gt;VNet Data Gateway&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;(Power Platform managed)&lt;/font&gt;" style="text;html=1;fontSize=12;fontColor=#333333;align=center;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="320" y="424" width="180" height="35" as="geometry" />
         </mxCell>
 
         <!-- ===== DEFAULT SUBNET ===== -->
-        <mxCell id="default-subnet" value="&lt;b&gt;default subnet&lt;/b&gt;&lt;br&gt;10.0.1.0/24" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F0FE;strokeColor=#6c8ebf;strokeWidth=1.5;verticalAlign=top;fontSize=11;fontColor=#333333;arcSize=8;dashed=1;dashPattern=5 3;align=left;spacingLeft=8;spacingTop=4;" vertex="1" parent="1">
-          <mxGeometry x="620" y="275" width="400" height="245" as="geometry" />
+        <mxCell id="default-subnet" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F8F9FA;strokeColor=#5EA4E0;strokeWidth=1.5;dashed=1;dashPattern=5 3;arcSize=6;" vertex="1" parent="1">
+          <mxGeometry x="700" y="290" width="510" height="240" as="geometry" />
+        </mxCell>
+        <mxCell id="default-subnet-icon" value="" style="shape=mxgraph.azure2.networking.subnet;fillColor=#FFFFFF;strokeColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="715" y="298" width="28" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="default-subnet-label" value="&lt;b&gt;default subnet&lt;/b&gt; · 10.0.1.0/24" style="text;html=1;fontSize=11;fontColor=#333333;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="747" y="298" width="220" height="26" as="geometry" />
         </mxCell>
 
-        <!-- Private Endpoint icon -->
-        <mxCell id="pe" value="" style="shape=mxgraph.azure.virtual_network;fillColor=#D5E8D4;strokeColor=#82B366;" vertex="1" parent="1">
-          <mxGeometry x="785" y="355" width="50" height="60" as="geometry" />
+        <!-- Private Endpoint icon (azure2) -->
+        <mxCell id="pe" value="" style="shape=mxgraph.azure2.networking.private_endpoint;fillColor=#FFFFFF;strokeColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="931" y="370" width="48" height="48" as="geometry" />
         </mxCell>
-        <mxCell id="pe-label" value="&lt;b&gt;Private Endpoint&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;pbi-pl-demo-pe-sql&lt;/font&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px;color:#82B366&quot;&gt;NIC: 10.0.1.4&lt;/font&gt;" style="text;html=1;fontSize=12;fontColor=#2D7600;align=center;verticalAlign=top;" vertex="1" parent="1">
-          <mxGeometry x="720" y="420" width="180" height="50" as="geometry" />
-        </mxCell>
-
-        <!-- ===================== AZURE SQL DATABASE (outside VNet) ===================== -->
-        <mxCell id="sql-db" value="" style="shape=mxgraph.azure.sql_database;fillColor=#4472C4;strokeColor=#2F5597;" vertex="1" parent="1">
-          <mxGeometry x="1000" y="580" width="47.5" height="50" as="geometry" />
-        </mxCell>
-        <mxCell id="sql-label" value="&lt;b&gt;Azure SQL Database&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;Server: pbi-pl-demo-sql&lt;/font&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;DB: ContosoRetail&lt;/font&gt;" style="text;html=1;fontSize=12;fontColor=#2F5597;align=center;verticalAlign=top;" vertex="1" parent="1">
-          <mxGeometry x="920" y="635" width="210" height="50" as="geometry" />
-        </mxCell>
-        <mxCell id="sql-security" value="🔒 Public Access: DISABLED" style="text;html=1;fontSize=11;fontColor=#CC0000;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
-          <mxGeometry x="930" y="685" width="200" height="20" as="geometry" />
+        <mxCell id="pe-label" value="&lt;b&gt;Private Endpoint&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;pbi-pl-demo-pe-sql&lt;/font&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px;color:#107C10&quot;&gt;NIC: 10.0.1.4&lt;/font&gt;" style="text;html=1;fontSize=12;fontColor=#333333;align=center;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="865" y="424" width="180" height="50" as="geometry" />
         </mxCell>
 
-        <!-- ===================== PRIVATE DNS ZONE (below VNet) ===================== -->
-        <mxCell id="dns-zone" value="" style="shape=mxgraph.azure.azure_dns;fillColor=#F4B183;strokeColor=#C55A11;" vertex="1" parent="1">
-          <mxGeometry x="210" y="600" width="50" height="50" as="geometry" />
+        <!-- ===================== AZURE SQL (outside VNet, bottom-right) ===================== -->
+        <mxCell id="sql-server-icon" value="" style="shape=mxgraph.azure2.databases.sql_server;fillColor=#FFFFFF;strokeColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="1060" y="620" width="40" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="dns-label" value="&lt;b&gt;Private DNS Zone&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;privatelink.database.windows.net&lt;/font&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px;color:#C55A11&quot;&gt;A record → 10.0.1.4&lt;/font&gt;" style="text;html=1;fontSize=12;fontColor=#C55A11;align=center;verticalAlign=top;" vertex="1" parent="1">
-          <mxGeometry x="120" y="655" width="240" height="50" as="geometry" />
+        <mxCell id="sql-db-icon" value="" style="shape=mxgraph.azure2.databases.sql_database;fillColor=#FFFFFF;strokeColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="1106" y="620" width="40" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="sql-label" value="&lt;b&gt;Azure SQL Database&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;Server: pbi-pl-demo-sql&lt;/font&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;DB: ContosoRetail&lt;/font&gt;" style="text;html=1;fontSize=12;fontColor=#0078D4;align=center;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="1000" y="665" width="210" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="sql-security" value="🔒 Public Access: DISABLED" style="text;html=1;fontSize=11;fontColor=#D13438;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="1010" y="715" width="200" height="20" as="geometry" />
+        </mxCell>
+
+        <!-- ===================== PRIVATE DNS ZONE (below VNet, left side) ===================== -->
+        <mxCell id="dns-zone" value="" style="shape=mxgraph.azure2.networking.dns_zones;fillColor=#FFFFFF;strokeColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="290" y="630" width="48" height="48" as="geometry" />
+        </mxCell>
+        <mxCell id="dns-label" value="&lt;b&gt;Private DNS Zone&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;privatelink.database.windows.net&lt;/font&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px;color:#D83B01&quot;&gt;A record → 10.0.1.4&lt;/font&gt;" style="text;html=1;fontSize=12;fontColor=#D83B01;align=center;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="190" y="683" width="250" height="50" as="geometry" />
         </mxCell>
 
         <!-- ===================== FLOW ARROWS ===================== -->
 
-        <!-- Arrow 1: Power BI Service → VNet Data Gateway -->
-        <mxCell id="arrow1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#D6B656;strokeWidth=2.5;endArrow=blockThin;endFill=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="pbi-cloud" target="vnet-gw">
+        <!-- ❶ Gold: Power BI → VNet Data Gateway -->
+        <mxCell id="arrow1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#D4A012;strokeWidth=2.5;endArrow=blockThin;endFill=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="pbi-icon" target="vnet-gw">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="arrow1-label" value="&lt;font style=&quot;background:#fff;padding:2px 6px;border-radius:3px;&quot;&gt;❶ Managed&lt;br&gt;Connection&lt;/font&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;fontSize=10;fontColor=#7F6000;" vertex="1" connectable="0" parent="arrow1">
-          <mxGeometry x="-0.1" relative="1" as="geometry">
-            <mxPoint x="-60" as="offset" />
+        <mxCell id="arrow1-label" value="&lt;span style=&quot;background:#FFFFFF;padding:2px 8px;border-radius:10px;&quot;&gt;❶ Managed Connection&lt;/span&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;fontSize=10;fontColor=#D4A012;" vertex="1" connectable="0" parent="arrow1">
+          <mxGeometry x="-0.15" relative="1" as="geometry">
+            <mxPoint x="-90" as="offset" />
           </mxGeometry>
         </mxCell>
 
-        <!-- Arrow 2: VNet Data Gateway → Private Endpoint -->
-        <mxCell id="arrow2" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#82B366;strokeWidth=2.5;endArrow=blockThin;endFill=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="vnet-gw" target="pe">
+        <!-- ❷ Green: VNet Data Gateway → Private Endpoint -->
+        <mxCell id="arrow2" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#107C10;strokeWidth=2.5;endArrow=blockThin;endFill=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="vnet-gw" target="pe">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="arrow2-label" value="&lt;font style=&quot;background:#fff;padding:2px 6px;border-radius:3px;&quot;&gt;❷ Private Network&lt;br&gt;(within VNet)&lt;/font&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;fontSize=10;fontColor=#2D7600;" vertex="1" connectable="0" parent="arrow2">
+        <mxCell id="arrow2-label" value="&lt;span style=&quot;background:#FFFFFF;padding:2px 8px;border-radius:10px;&quot;&gt;❷ Private Network (within VNet)&lt;/span&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;fontSize=10;fontColor=#107C10;" vertex="1" connectable="0" parent="arrow2">
           <mxGeometry x="-0.1" relative="1" as="geometry">
             <mxPoint y="-20" as="offset" />
           </mxGeometry>
         </mxCell>
 
-        <!-- Arrow 3: Private Endpoint → Azure SQL -->
-        <mxCell id="arrow3" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2F5597;strokeWidth=2.5;endArrow=blockThin;endFill=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="pe" target="sql-db">
+        <!-- ❸ Blue: Private Endpoint → Azure SQL -->
+        <mxCell id="arrow3" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#0078D4;strokeWidth=2.5;endArrow=blockThin;endFill=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="pe" target="sql-db-icon">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
-              <mxPoint x="810" y="550" />
-              <mxPoint x="1024" y="550" />
+              <mxPoint x="955" y="590" />
+              <mxPoint x="1126" y="590" />
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="arrow3-label" value="&lt;font style=&quot;background:#fff;padding:2px 6px;border-radius:3px;&quot;&gt;❸ Private Link&lt;br&gt;Connection&lt;/font&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;fontSize=10;fontColor=#2F5597;" vertex="1" connectable="0" parent="arrow3">
+        <mxCell id="arrow3-label" value="&lt;span style=&quot;background:#FFFFFF;padding:2px 8px;border-radius:10px;&quot;&gt;❸ Private Link Connection&lt;/span&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;fontSize=10;fontColor=#0078D4;" vertex="1" connectable="0" parent="arrow3">
           <mxGeometry x="0.2" relative="1" as="geometry">
             <mxPoint x="30" as="offset" />
           </mxGeometry>
         </mxCell>
 
-        <!-- Arrow 4: DNS resolution (dashed) VNet → Private DNS Zone -->
-        <mxCell id="arrow4" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#C55A11;strokeWidth=2;dashed=1;dashPattern=8 4;endArrow=blockThin;endFill=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="gw-subnet" target="dns-zone">
+        <!-- ❹ Orange dashed: VNet → Private DNS Zone -->
+        <mxCell id="arrow4" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#D83B01;strokeWidth=2;dashed=1;dashPattern=8 4;endArrow=blockThin;endFill=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="gw-subnet" target="dns-zone">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
-              <mxPoint x="370" y="560" />
-              <mxPoint x="235" y="560" />
+              <mxPoint x="410" y="590" />
+              <mxPoint x="314" y="590" />
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="arrow4-label" value="&lt;font style=&quot;background:#fff;padding:2px 6px;border-radius:3px;&quot;&gt;❹ DNS Resolution&lt;br&gt;→ 10.0.1.4&lt;/font&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;fontSize=10;fontColor=#C55A11;" vertex="1" connectable="0" parent="arrow4">
+        <mxCell id="arrow4-label" value="&lt;span style=&quot;background:#FFFFFF;padding:2px 8px;border-radius:10px;&quot;&gt;❹ DNS Resolution → 10.0.1.4&lt;/span&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;fontSize=10;fontColor=#D83B01;" vertex="1" connectable="0" parent="arrow4">
           <mxGeometry x="0.2" relative="1" as="geometry">
-            <mxPoint x="-55" y="5" as="offset" />
+            <mxPoint x="-80" y="5" as="offset" />
           </mxGeometry>
         </mxCell>
 
         <!-- ===================== LEGEND ===================== -->
-        <mxCell id="legend-box" value="&lt;b&gt;Legend&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F5F5F5;strokeColor=#999999;strokeWidth=1;verticalAlign=top;fontSize=11;fontColor=#333333;arcSize=10;align=left;spacingLeft=8;spacingTop=2;" vertex="1" parent="1">
-          <mxGeometry x="20" y="760" width="280" height="120" as="geometry" />
+        <mxCell id="legend-box" value="&lt;b&gt;Legend&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F5F5F5;strokeColor=#CCCCCC;strokeWidth=1;verticalAlign=top;fontSize=11;fontColor=#333333;arcSize=8;align=left;spacingLeft=8;spacingTop=2;" vertex="1" parent="1">
+          <mxGeometry x="20" y="770" width="340" height="115" as="geometry" />
         </mxCell>
-        <mxCell id="legend-solid" value="" style="endArrow=blockThin;endFill=1;html=1;strokeColor=#333333;strokeWidth=2;" edge="1" parent="1">
+
+        <!-- Legend: Gold arrow -->
+        <mxCell id="leg-gold" value="" style="endArrow=blockThin;endFill=1;html=1;strokeColor=#D4A012;strokeWidth=2.5;" edge="1" parent="1">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="40" y="800" as="sourcePoint" />
-            <mxPoint x="110" y="800" as="targetPoint" />
+            <mxPoint x="40" y="808" as="sourcePoint" />
+            <mxPoint x="100" y="808" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="legend-solid-label" value="Data flow" style="text;html=1;fontSize=11;fontColor=#333333;align=left;verticalAlign=middle;" vertex="1" parent="1">
-          <mxGeometry x="120" y="790" width="100" height="20" as="geometry" />
+        <mxCell id="leg-gold-label" value="❶ Managed Connection" style="text;html=1;fontSize=10;fontColor=#D4A012;align=left;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="108" y="798" width="200" height="20" as="geometry" />
         </mxCell>
-        <mxCell id="legend-dashed" value="" style="endArrow=blockThin;endFill=1;html=1;strokeColor=#C55A11;strokeWidth=2;dashed=1;dashPattern=8 4;" edge="1" parent="1">
+
+        <!-- Legend: Green arrow -->
+        <mxCell id="leg-green" value="" style="endArrow=blockThin;endFill=1;html=1;strokeColor=#107C10;strokeWidth=2.5;" edge="1" parent="1">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="40" y="825" as="sourcePoint" />
-            <mxPoint x="110" y="825" as="targetPoint" />
+            <mxPoint x="40" y="828" as="sourcePoint" />
+            <mxPoint x="100" y="828" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="legend-dashed-label" value="DNS resolution flow" style="text;html=1;fontSize=11;fontColor=#C55A11;align=left;verticalAlign=middle;" vertex="1" parent="1">
-          <mxGeometry x="120" y="815" width="150" height="20" as="geometry" />
+        <mxCell id="leg-green-label" value="❷ Private Network" style="text;html=1;fontSize=10;fontColor=#107C10;align=left;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="108" y="818" width="200" height="20" as="geometry" />
         </mxCell>
-        <mxCell id="legend-pe-color" value="" style="rounded=1;fillColor=#D5E8D4;strokeColor=#82B366;strokeWidth=1;" vertex="1" parent="1">
-          <mxGeometry x="40" y="843" width="20" height="12" as="geometry" />
+
+        <!-- Legend: Blue arrow -->
+        <mxCell id="leg-blue" value="" style="endArrow=blockThin;endFill=1;html=1;strokeColor=#0078D4;strokeWidth=2.5;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="40" y="848" as="sourcePoint" />
+            <mxPoint x="100" y="848" as="targetPoint" />
+          </mxGeometry>
         </mxCell>
-        <mxCell id="legend-pe-label" value="Private Endpoint" style="text;html=1;fontSize=11;fontColor=#2D7600;align=left;verticalAlign=middle;" vertex="1" parent="1">
-          <mxGeometry x="70" y="837" width="120" height="20" as="geometry" />
+        <mxCell id="leg-blue-label" value="❸ Private Link" style="text;html=1;fontSize=10;fontColor=#0078D4;align=left;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="108" y="838" width="200" height="20" as="geometry" />
         </mxCell>
-        <mxCell id="legend-sql-color" value="" style="rounded=1;fillColor=#4472C4;strokeColor=#2F5597;strokeWidth=1;" vertex="1" parent="1">
-          <mxGeometry x="190" y="843" width="20" height="12" as="geometry" />
+
+        <!-- Legend: Orange dashed arrow -->
+        <mxCell id="leg-orange" value="" style="endArrow=blockThin;endFill=1;html=1;strokeColor=#D83B01;strokeWidth=2;dashed=1;dashPattern=8 4;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="40" y="868" as="sourcePoint" />
+            <mxPoint x="100" y="868" as="targetPoint" />
+          </mxGeometry>
         </mxCell>
-        <mxCell id="legend-sql-label" value="Azure SQL" style="text;html=1;fontSize=11;fontColor=#2F5597;align=left;verticalAlign=middle;" vertex="1" parent="1">
-          <mxGeometry x="215" y="837" width="80" height="20" as="geometry" />
-        </mxCell>
-        <mxCell id="legend-dns-color" value="" style="rounded=1;fillColor=#F4B183;strokeColor=#C55A11;strokeWidth=1;" vertex="1" parent="1">
-          <mxGeometry x="40" y="863" width="20" height="12" as="geometry" />
-        </mxCell>
-        <mxCell id="legend-dns-label" value="DNS Zone" style="text;html=1;fontSize=11;fontColor=#C55A11;align=left;verticalAlign=middle;" vertex="1" parent="1">
-          <mxGeometry x="70" y="857" width="80" height="20" as="geometry" />
-        </mxCell>
-        <mxCell id="legend-pbi-color" value="" style="rounded=1;fillColor=#FFD966;strokeColor=#D6B656;strokeWidth=1;" vertex="1" parent="1">
-          <mxGeometry x="190" y="863" width="20" height="12" as="geometry" />
-        </mxCell>
-        <mxCell id="legend-pbi-label" value="Power BI" style="text;html=1;fontSize=11;fontColor=#7F6000;align=left;verticalAlign=middle;" vertex="1" parent="1">
-          <mxGeometry x="215" y="857" width="80" height="20" as="geometry" />
+        <mxCell id="leg-orange-label" value="❹ DNS Resolution (dashed)" style="text;html=1;fontSize=10;fontColor=#D83B01;align=left;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="108" y="858" width="200" height="20" as="geometry" />
         </mxCell>
 
       </root>
