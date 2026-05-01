@@ -6,17 +6,13 @@ This repo is a **demo-first** project proving that Power BI Service can access a
 
 ## Architecture
 
-```
-Power BI Service
-        │
-        ▼
-VNet Data Gateway (inside VNet)
-        │
-        ▼
-   Azure VNet ──► Private Endpoint ──► Azure SQL DB (public access disabled)
-        │
-  Private DNS Zone
-  (privatelink.database.windows.net)
+```mermaid
+flowchart TB
+    PBI["Power BI Service"] --> GW["VNet Data Gateway\n(gateway subnet)"]
+    GW --> PE["Private Endpoint\n(default subnet)"]
+    PE --> SQL["Azure SQL DB\n(public access disabled)"]
+    GW -.->|"DNS query"| DNS["Private DNS Zone\n(privatelink.database.windows.net)"]
+    DNS -.->|"Resolves to 10.0.1.x"| PE
 ```
 
 Key points:

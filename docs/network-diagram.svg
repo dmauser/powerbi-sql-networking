@@ -1,0 +1,149 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="1200" height="800" font-family="Segoe UI, Arial, sans-serif">
+  <defs>
+    <filter id="shadow" x="-2%" y="-2%" width="104%" height="104%">
+      <feDropShadow dx="1" dy="2" stdDeviation="3" flood-opacity="0.12"/>
+    </filter>
+    <marker id="arrowGold" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#D6B656"/>
+    </marker>
+    <marker id="arrowGreen" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#82B366"/>
+    </marker>
+    <marker id="arrowBlue" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#2F5597"/>
+    </marker>
+    <marker id="arrowOrange" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#C55A11"/>
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="800" fill="#FAFBFC" rx="4"/>
+
+  <!-- ==================== TITLE ==================== -->
+  <text x="600" y="32" text-anchor="middle" font-size="22" font-weight="700" fill="#23272F">Power BI → Azure SQL via Private Link</text>
+  <text x="600" y="54" text-anchor="middle" font-size="13" fill="#666">Resource Group: <tspan font-weight="600">rg-pbi-pl-demo-2</tspan> (centralus)</text>
+
+  <!-- ==================== POWER BI SERVICE ==================== -->
+  <g filter="url(#shadow)">
+    <ellipse cx="540" cy="105" rx="80" ry="36" fill="#FFD966" stroke="#D6B656" stroke-width="2"/>
+    <path d="M490,105 Q490,82 540,78 Q590,82 590,105" fill="none" stroke="#D6B656" stroke-width="1.5" opacity="0.4"/>
+  </g>
+  <text x="540" y="102" text-anchor="middle" font-size="13" font-weight="700" fill="#7F6000">Power BI Service</text>
+  <text x="540" y="118" text-anchor="middle" font-size="10" fill="#7F6000">(Microsoft Cloud)</text>
+
+  <!-- ==================== AZURE VNET CONTAINER ==================== -->
+  <rect x="100" y="195" width="920" height="340" rx="10" ry="10" fill="#EAF1FB" stroke="#6C8EBF" stroke-width="2.5" filter="url(#shadow)"/>
+  <text x="120" y="218" font-size="13" font-weight="700" fill="#333">Azure VNet</text>
+  <text x="229" y="218" font-size="12" fill="#555">pbi-pl-demo-vnet · 10.0.0.0/16</text>
+
+  <!-- ===== GATEWAY SUBNET ===== -->
+  <rect x="125" y="238" width="380" height="275" rx="8" ry="8" fill="#F0F5FF" stroke="#6C8EBF" stroke-width="1.5" stroke-dasharray="6 3"/>
+  <text x="145" y="260" font-size="12" font-weight="700" fill="#333">gateway subnet</text>
+  <text x="145" y="276" font-size="11" fill="#555">10.0.2.0/24</text>
+  <text x="145" y="292" font-size="9" fill="#888">Delegation: Microsoft.PowerPlatform/vnetaccesslinks</text>
+
+  <!-- VNet Data Gateway Icon -->
+  <g transform="translate(275, 340)">
+    <rect x="0" y="10" width="60" height="50" rx="6" fill="#FFD966" stroke="#D6B656" stroke-width="1.5" filter="url(#shadow)"/>
+    <rect x="8" y="0" width="44" height="14" rx="3" fill="#E8C84A" stroke="#D6B656" stroke-width="1"/>
+    <line x1="18" y1="26" x2="42" y2="26" stroke="#B8962E" stroke-width="2"/>
+    <line x1="18" y1="34" x2="42" y2="34" stroke="#B8962E" stroke-width="2"/>
+    <line x1="18" y1="42" x2="42" y2="42" stroke="#B8962E" stroke-width="2"/>
+    <circle cx="14" cy="26" r="3" fill="#B8962E"/>
+    <circle cx="14" cy="34" r="3" fill="#B8962E"/>
+    <circle cx="14" cy="42" r="3" fill="#B8962E"/>
+  </g>
+  <text x="305" y="414" text-anchor="middle" font-size="13" font-weight="700" fill="#7F6000">VNet Data Gateway</text>
+  <text x="305" y="430" text-anchor="middle" font-size="10" fill="#7F6000">(Power Platform managed)</text>
+
+  <!-- ===== DEFAULT SUBNET ===== -->
+  <rect x="545" y="238" width="450" height="275" rx="8" ry="8" fill="#F0F5FF" stroke="#6C8EBF" stroke-width="1.5" stroke-dasharray="6 3"/>
+  <text x="565" y="260" font-size="12" font-weight="700" fill="#333">default subnet</text>
+  <text x="565" y="276" font-size="11" fill="#555">10.0.1.0/24</text>
+
+  <!-- Private Endpoint Icon -->
+  <g transform="translate(730, 330)">
+    <rect x="0" y="0" width="60" height="60" rx="8" fill="#D5E8D4" stroke="#82B366" stroke-width="2" filter="url(#shadow)"/>
+    <circle cx="30" cy="24" r="12" fill="none" stroke="#2D7600" stroke-width="2"/>
+    <line x1="30" y1="36" x2="30" y2="50" stroke="#2D7600" stroke-width="2"/>
+    <line x1="20" y1="50" x2="40" y2="50" stroke="#2D7600" stroke-width="2.5"/>
+    <circle cx="30" cy="24" r="4" fill="#2D7600"/>
+  </g>
+  <text x="760" y="410" text-anchor="middle" font-size="13" font-weight="700" fill="#2D7600">Private Endpoint</text>
+  <text x="760" y="426" text-anchor="middle" font-size="10" fill="#555">pbi-pl-demo-pe-sql</text>
+  <text x="760" y="442" text-anchor="middle" font-size="10" font-weight="600" fill="#82B366">NIC: 10.0.1.4</text>
+
+  <!-- ==================== AZURE SQL DATABASE ==================== -->
+  <g transform="translate(980, 580)" filter="url(#shadow)">
+    <ellipse cx="35" cy="8" rx="35" ry="8" fill="#5B9BD5" stroke="#2F5597" stroke-width="1.5"/>
+    <rect x="0" y="8" width="70" height="40" fill="#4472C4" stroke="#2F5597" stroke-width="1.5"/>
+    <ellipse cx="35" cy="48" rx="35" ry="8" fill="#4472C4" stroke="#2F5597" stroke-width="1.5"/>
+    <ellipse cx="35" cy="8" rx="35" ry="8" fill="#5B9BD5" stroke="#2F5597" stroke-width="1.5"/>
+  </g>
+  <text x="1015" y="648" text-anchor="middle" font-size="13" font-weight="700" fill="#2F5597">Azure SQL Database</text>
+  <text x="1015" y="664" text-anchor="middle" font-size="10" fill="#555">Server: pbi-pl-demo-sql</text>
+  <text x="1015" y="678" text-anchor="middle" font-size="10" fill="#555">DB: ContosoRetail</text>
+  <text x="1015" y="698" text-anchor="middle" font-size="11" font-weight="700" fill="#CC0000">🔒 Public Access: DISABLED</text>
+
+  <!-- ==================== PRIVATE DNS ZONE ==================== -->
+  <g transform="translate(140, 590)" filter="url(#shadow)">
+    <rect x="0" y="0" width="55" height="50" rx="6" fill="#F4B183" stroke="#C55A11" stroke-width="1.5"/>
+    <text x="28" y="20" text-anchor="middle" font-size="16" fill="#C55A11" font-weight="700">DNS</text>
+    <line x1="10" y1="30" x2="45" y2="30" stroke="#C55A11" stroke-width="1"/>
+    <text x="28" y="43" text-anchor="middle" font-size="8" fill="#8B4513">ZONE</text>
+  </g>
+  <text x="168" y="660" text-anchor="middle" font-size="13" font-weight="700" fill="#C55A11">Private DNS Zone</text>
+  <text x="168" y="676" text-anchor="middle" font-size="10" fill="#888">privatelink.database.windows.net</text>
+  <text x="168" y="692" text-anchor="middle" font-size="10" font-weight="600" fill="#C55A11">A record → 10.0.1.4</text>
+
+  <!-- ==================== FLOW ARROWS ==================== -->
+
+  <!-- Arrow 1: Power BI → VNet Data Gateway (vertical) -->
+  <path d="M540,141 L540,195 L305,195 L305,340" fill="none" stroke="#D6B656" stroke-width="2.5" marker-end="url(#arrowGold)"/>
+  <rect x="382" y="155" width="126" height="36" rx="4" fill="white" stroke="#D6B656" stroke-width="1" opacity="0.95"/>
+  <text x="445" y="170" text-anchor="middle" font-size="11" font-weight="600" fill="#7F6000">❶ Managed</text>
+  <text x="445" y="184" text-anchor="middle" font-size="11" fill="#7F6000">Connection</text>
+
+  <!-- Arrow 2: VNet Data Gateway → Private Endpoint (horizontal) -->
+  <path d="M335,400 L535,400 L535,360 L730,360" fill="none" stroke="#82B366" stroke-width="2.5" marker-end="url(#arrowGreen)"/>
+  <rect x="505" y="316" width="140" height="32" rx="4" fill="white" stroke="#82B366" stroke-width="1" opacity="0.95"/>
+  <text x="575" y="330" text-anchor="middle" font-size="11" font-weight="600" fill="#2D7600">❷ Private Network</text>
+  <text x="575" y="343" text-anchor="middle" font-size="10" fill="#2D7600">(within VNet)</text>
+
+  <!-- Arrow 3: Private Endpoint → Azure SQL -->
+  <path d="M790,390 L790,555 L1015,555 L1015,580" fill="none" stroke="#2F5597" stroke-width="2.5" marker-end="url(#arrowBlue)"/>
+  <rect x="850" y="538" width="122" height="32" rx="4" fill="white" stroke="#2F5597" stroke-width="1" opacity="0.95"/>
+  <text x="911" y="551" text-anchor="middle" font-size="11" font-weight="600" fill="#2F5597">❸ Private Link</text>
+  <text x="911" y="564" text-anchor="middle" font-size="10" fill="#2F5597">Connection</text>
+
+  <!-- Arrow 4: DNS Resolution (dashed) -->
+  <path d="M305,460 L305,570 L168,570 L168,590" fill="none" stroke="#C55A11" stroke-width="2" stroke-dasharray="8 4" marker-end="url(#arrowOrange)"/>
+  <rect x="193" y="547" width="138" height="32" rx="4" fill="white" stroke="#C55A11" stroke-width="1" opacity="0.95"/>
+  <text x="262" y="560" text-anchor="middle" font-size="11" font-weight="600" fill="#C55A11">❹ DNS Resolution</text>
+  <text x="262" y="573" text-anchor="middle" font-size="10" fill="#C55A11">→ 10.0.1.4</text>
+
+  <!-- ==================== LEGEND ==================== -->
+  <rect x="20" y="725" width="310" height="65" rx="6" ry="6" fill="#F5F5F5" stroke="#CCCCCC" stroke-width="1"/>
+  <text x="35" y="744" font-size="12" font-weight="700" fill="#333">Legend</text>
+
+  <!-- Solid line -->
+  <line x1="35" y1="758" x2="85" y2="758" stroke="#333" stroke-width="2"/>
+  <polygon points="85,755 92,758 85,761" fill="#333"/>
+  <text x="100" y="762" font-size="11" fill="#333">Data flow</text>
+
+  <!-- Dashed line -->
+  <line x1="185" y1="758" x2="235" y2="758" stroke="#C55A11" stroke-width="2" stroke-dasharray="8 4"/>
+  <polygon points="235,755 242,758 235,761" fill="#C55A11"/>
+  <text x="250" y="762" font-size="11" fill="#C55A11">DNS resolution</text>
+
+  <!-- Color swatches -->
+  <rect x="35" y="772" width="16" height="10" rx="2" fill="#D5E8D4" stroke="#82B366" stroke-width="1"/>
+  <text x="57" y="781" font-size="10" fill="#2D7600">Private Endpoint</text>
+  <rect x="155" y="772" width="16" height="10" rx="2" fill="#4472C4" stroke="#2F5597" stroke-width="1"/>
+  <text x="177" y="781" font-size="10" fill="#2F5597">Azure SQL</text>
+  <rect x="235" y="772" width="16" height="10" rx="2" fill="#F4B183" stroke="#C55A11" stroke-width="1"/>
+  <text x="257" y="781" font-size="10" fill="#C55A11">DNS</text>
+  <rect x="285" y="772" width="16" height="10" rx="2" fill="#FFD966" stroke="#D6B656" stroke-width="1"/>
+  <text x="307" y="781" font-size="10" fill="#7F6000">PBI</text>
+</svg>

@@ -6,51 +6,35 @@ This architecture demonstrates how Power BI Service can securely connect to an A
 
 ## Architecture Diagram
 
-```
-┌─────────────────────────────────────────────────────────────────────────────────┐
-│  Microsoft Cloud                                                                │
-│                                                                                 │
-│  ┌──────────────────────┐         ┌─────────────────────────────────────────┐   │
-│  │  Power BI Service     │         │  Azure VNet: pbi-pl-demo-vnet          │   │
-│  │                       │         │  Address Space: 10.0.0.0/16            │   │
-│  │  ┌─────────────────┐  │         │                                         │   │
-│  │  │ Dataset          │  │         │  ┌─────────────────────────────────┐   │   │
-│  │  │ (ContosoRetail)  │  │         │  │ Gateway Subnet: 10.0.2.0/24    │   │   │
-│  │  └────────┬─────────┘  │         │  │                                 │   │   │
-│  │           │             │  ①      │  │  ┌───────────────────────────┐ │   │   │
-│  │           ▼             │────────▶│  │  │ VNet Data Gateway         │ │   │   │
-│  │  ┌─────────────────┐   │         │  │  │ (pbi-pl-demo-vnetgw)      │ │   │   │
-│  │  │ Power BI Report  │  │         │  │  └────────────┬──────────────┘ │   │   │
-│  │  └─────────────────┘   │         │  └───────────────┼────────────────┘   │   │
-│  └──────────────────────┘         │                   │                     │   │
-│                                    │                   │ ②                   │   │
-│                                    │  ┌────────────────▼────────────────┐   │   │
-│                                    │  │ Default Subnet: 10.0.1.0/24    │   │   │
-│                                    │  │                                 │   │   │
-│                                    │  │  ┌───────────────────────────┐ │   │   │
-│                                    │  │  │ Private Endpoint          │ │   │   │
-│                                    │  │  │ (pbi-pl-demo-sql-pe)      │ │   │   │
-│                                    │  │  │ NIC IP: 10.0.1.x          │ │   │   │
-│                                    │  │  └────────────┬──────────────┘ │   │   │
-│                                    │  └───────────────┼────────────────┘   │   │
-│                                    └──────────────────┼─────────────────────┘   │
-│                                                       │ ③ Private Link          │
-│                                    ┌──────────────────▼─────────────────────┐   │
-│                                    │  Azure SQL Server                       │   │
-│                                    │  pbi-pl-demo-sql.database.windows.net   │   │
-│                                    │  Public network access: DISABLED        │   │
-│                                    │                                         │   │
-│                                    │  Database: ContosoRetail                │   │
-│                                    │  Tables: Customers, Products,           │   │
-│                                    │          Orders, OrderItems             │   │
-│                                    └─────────────────────────────────────────┘   │
-│                                                                                 │
-│  ┌─────────────────────────────────────────────────────────────────────┐         │
-│  │  Private DNS Zone: privatelink.database.windows.net                 │         │
-│  │  A Record: pbi-pl-demo-sql → 10.0.1.x (PE NIC IP)                 │         │
-│  │  VNet Link: linked to pbi-pl-demo-vnet (auto-registration)         │         │
-│  └─────────────────────────────────────────────────────────────────────┘         │
-└─────────────────────────────────────────────────────────────────────────────────┘
+```mermaid
+flowchart TB
+    subgraph Microsoft Cloud
+        subgraph PBI["Power BI Service"]
+            DS["Dataset\n(ContosoRetail)"]
+            RPT["Power BI Report"]
+        end
+
+        subgraph VNET["Azure VNet: pbi-pl-demo-vnet\n10.0.0.0/16"]
+            subgraph GWSub["Gateway Subnet: 10.0.2.0/24"]
+                GW["VNet Data Gateway\n(pbi-pl-demo-vnetgw)"]
+            end
+            subgraph DefSub["Default Subnet: 10.0.1.0/24"]
+                PE["Private Endpoint\n(pbi-pl-demo-sql-pe)\nNIC IP: 10.0.1.x"]
+            end
+        end
+
+        subgraph SQL["Azure SQL Server\npbi-pl-demo-sql.database.windows.net\nPublic network access: DISABLED"]
+            DB["Database: ContosoRetail\nTables: Customers, Products,\nOrders, OrderItems"]
+        end
+
+        DNS["Private DNS Zone\nprivatelink.database.windows.net\nA Record: pbi-pl-demo-sql → 10.0.1.x\nVNet Link: pbi-pl-demo-vnet"]
+    end
+
+    DS -->|"① Refresh request"| GW
+    GW -->|"② VNet traffic"| PE
+    PE -->|"③ Private Link"| SQL
+    GW -.->|"DNS query"| DNS
+    DNS -.->|"Resolves to 10.0.1.x"| PE
 ```
 
 ## Component Descriptions
@@ -94,22 +78,19 @@ Query results flow back through the same private path: SQL Server → Private Li
 
 ## DNS Resolution Flow
 
-```
-Gateway queries: pbi-pl-demo-sql.database.windows.net
-        │
-        ▼
-Azure DNS checks VNet-linked Private DNS Zones
-        │
-        ▼
-CNAME: pbi-pl-demo-sql.database.windows.net
-   →   pbi-pl-demo-sql.privatelink.database.windows.net
-        │
-        ▼
-Private DNS Zone: privatelink.database.windows.net
-   A Record: pbi-pl-demo-sql → 10.0.1.4  (Private Endpoint NIC IP)
-        │
-        ▼
-Gateway connects to 10.0.1.4:1433 (private, in-VNet)
+```mermaid
+sequenceDiagram
+    participant GW as VNet Data Gateway
+    participant ADNS as Azure DNS
+    participant PDNS as Private DNS Zone<br/>(privatelink.database.windows.net)
+    participant PE as Private Endpoint<br/>(10.0.1.4)
+
+    GW->>ADNS: Query: pbi-pl-demo-sql.database.windows.net
+    ADNS->>ADNS: Check VNet-linked Private DNS Zones
+    ADNS->>PDNS: CNAME → pbi-pl-demo-sql.privatelink.database.windows.net
+    PDNS-->>ADNS: A Record: 10.0.1.4 (PE NIC IP)
+    ADNS-->>GW: Resolved: 10.0.1.4
+    GW->>PE: Connect to 10.0.1.4:1433 (private, in-VNet)
 ```
 
 **Key point:** If the Private DNS Zone is *not* linked to the VNet, or the A record is missing, the DNS query falls through to public DNS and resolves to the SQL Server's public IP — which will be **rejected** because public access is disabled. This is the #1 cause of connectivity failures in Private Link setups.
