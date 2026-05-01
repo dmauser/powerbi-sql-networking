@@ -22,6 +22,35 @@ The demo is **automation-first** (Bicep + Azure CLI) with parallel **portal clic
 
 **Key security posture**: Azure SQL has public network access disabled. All traffic flows through the Private Endpoint. DNS resolves the SQL FQDN to a private IP via the Private DNS Zone.
 
+### Setup
+
+The deployment creates a single Azure VNet (`10.0.0.0/16`) with two subnets:
+
+| Subnet | CIDR | Purpose |
+|--------|------|---------|
+| `default` | `10.0.1.0/24` | Hosts the **Private Endpoint** that provides a private NIC (e.g., `10.0.1.4`) mapped to the Azure SQL Server |
+| `gateway` | `10.0.2.0/24` | Hosts the **VNet Data Gateway**, delegated to `Microsoft.PowerPlatform/vnetaccesslinks` so Power BI Service can inject the gateway into this subnet |
+
+Azure SQL Server is created with **public network access disabled** — there are no firewall rules, no "Allow Azure services" exceptions. The only way to reach it is through the Private Endpoint.
+
+A **Private DNS Zone** (`privatelink.database.windows.net`) is linked to the VNet and automatically registers an A record pointing the SQL Server's FQDN to the Private Endpoint's private IP address.
+
+### Traffic Flow
+
+When Power BI refreshes a dataset, the following happens end-to-end:
+
+1. **Power BI Service → VNet Data Gateway** — Power BI Service initiates a managed connection to the VNet Data Gateway running inside the `gateway` subnet. This is a Microsoft-managed control plane connection — no inbound ports need to be opened.
+
+2. **DNS Resolution** — The gateway resolves `pbi-pl-demo-sql-xxxxx.database.windows.net`. Because the VNet is linked to the Private DNS Zone, the query hits `privatelink.database.windows.net` and returns the private IP `10.0.1.4` instead of a public IP.
+
+3. **VNet Data Gateway → Private Endpoint** — The gateway connects to `10.0.1.4:1433` over the VNet's private network. Traffic stays within the Azure backbone — it never traverses the public internet.
+
+4. **Private Endpoint → Azure SQL** — The Private Endpoint forwards the TDS connection to the Azure SQL Server over Microsoft's Private Link infrastructure. SQL Server sees the connection as coming from the Private Endpoint's NIC.
+
+5. **Response** — Query results travel the reverse path back to Power BI Service, which updates the dataset and any connected reports/dashboards.
+
+> **Key point**: At no stage does traffic leave the private network. DNS resolves to a private IP, the gateway connects over the VNet, and the Private Endpoint tunnels into SQL — all within the Azure backbone.
+
 ---
 
 ## Prerequisites
