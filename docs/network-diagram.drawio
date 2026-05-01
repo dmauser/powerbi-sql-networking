@@ -15,10 +15,10 @@
 
         <!-- POWER BI SERVICE -->
         <mxCell id="pbi-icon" value="" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=default;verticalAlign=top;aspect=fixed;imageAspect=0;image=img/lib/azure2/analytics/Power_BI_Embedded.svg;" vertex="1" parent="1">
-          <mxGeometry x="526" y="85" width="48" height="48" as="geometry" />
+          <mxGeometry x="356" y="85" width="48" height="48" as="geometry" />
         </mxCell>
         <mxCell id="pbi-label" value="&lt;b&gt;Power BI Service&lt;/b&gt;&lt;br&gt;&lt;font style=&amp;quot;font-size:10px&amp;quot;&gt;(Microsoft Cloud)&lt;/font&gt;" style="text;html=1;fontSize=13;fontColor=#7F6000;align=center;verticalAlign=top;" vertex="1" parent="1">
-          <mxGeometry x="470" y="138" width="160" height="40" as="geometry" />
+          <mxGeometry x="300" y="138" width="160" height="40" as="geometry" />
         </mxCell>
 
         <!-- AZURE VNET CONTAINER -->
@@ -70,7 +70,7 @@
           <mxGeometry x="840" y="365" width="50" height="50" as="geometry" />
         </mxCell>
         <mxCell id="pe-label" value="&lt;b&gt;Private Endpoint&lt;/b&gt;&lt;br&gt;&lt;font style=&amp;quot;font-size:10px&amp;quot;&gt;pbi-pl-demo-pe-sql&lt;/font&gt;&lt;br&gt;&lt;font style=&amp;quot;font-size:10px;color:#107C10&amp;quot;&gt;NIC: 10.0.1.4&lt;/font&gt;" style="text;html=1;fontSize=12;fontColor=#107C10;align=center;verticalAlign=top;" vertex="1" parent="1">
-          <mxGeometry x="775" y="420" width="180" height="50" as="geometry" />
+          <mxGeometry x="880" y="340" width="180" height="50" as="geometry" />
         </mxCell>
 
         <!-- AZURE SQL DATABASE -->
@@ -97,8 +97,8 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="arrow1-label" value="&lt;font style=&amp;quot;background:#fff;padding:2px 6px;border-radius:3px;&amp;quot;&gt;&#x2776; Managed Connection&lt;/font&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;fontSize=10;fontColor=#7F6000;" vertex="1" connectable="0" parent="arrow1">
-          <mxGeometry x="-0.1" relative="1" as="geometry">
-            <mxPoint x="-70" as="offset" />
+          <mxGeometry x="-0.3" relative="1" as="geometry">
+            <mxPoint x="-80" as="offset" />
           </mxGeometry>
         </mxCell>
 
@@ -113,17 +113,16 @@
         </mxCell>
 
         <!-- ARROW 3: Private Endpoint -> Azure SQL -->
-        <mxCell id="arrow3" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#0078D4;strokeWidth=2.5;endArrow=blockThin;endFill=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="pe" target="sql-db">
+        <mxCell id="arrow3" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#0078D4;strokeWidth=2.5;endArrow=blockThin;endFill=1;exitX=1;exitY=0.5;entryX=0.5;entryY=0;" edge="1" parent="1" source="pe" target="sql-db">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
-              <mxPoint x="865" y="555" />
-              <mxPoint x="1065" y="555" />
+              <mxPoint x="1065" y="390" />
             </Array>
           </mxGeometry>
         </mxCell>
         <mxCell id="arrow3-label" value="&lt;font style=&amp;quot;background:#fff;padding:2px 6px;border-radius:3px;&amp;quot;&gt;&#x2778; Private Link Connection&lt;/font&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;fontSize=10;fontColor=#0078D4;" vertex="1" connectable="0" parent="arrow3">
-          <mxGeometry x="0.2" relative="1" as="geometry">
-            <mxPoint x="40" as="offset" />
+          <mxGeometry x="-0.3" relative="1" as="geometry">
+            <mxPoint x="35" as="offset" />
           </mxGeometry>
         </mxCell>
 
@@ -137,8 +136,8 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="arrow4-label" value="&lt;font style=&amp;quot;background:#fff;padding:2px 6px;border-radius:3px;&amp;quot;&gt;&#x2779; DNS Resolution &#x2192; 10.0.1.4&lt;/font&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;fontSize=10;fontColor=#D83B01;" vertex="1" connectable="0" parent="arrow4">
-          <mxGeometry x="0.2" relative="1" as="geometry">
-            <mxPoint x="-65" y="5" as="offset" />
+          <mxGeometry x="-0.2" relative="1" as="geometry">
+            <mxPoint x="70" y="-5" as="offset" />
           </mxGeometry>
         </mxCell>
 
