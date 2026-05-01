@@ -16,33 +16,9 @@ The demo is **automation-first** (Bicep + Azure CLI) with parallel **portal clic
 
 ## Architecture
 
-```
-┌─────────────────────┐
-│  Power BI Service    │
-│  (Microsoft Cloud)   │
-└─────────┬───────────┘
-          │ Managed connection
-          ▼
-┌─────────────────────┐
-│  VNet Data Gateway   │
-│  Subnet: 10.0.2.0/24│
-│  (gateway subnet)    │
-└─────────┬───────────┘
-          │ Private network
-          ▼
-┌─────────────────────┐     ┌──────────────────────────────┐
-│  Private Endpoint    │────▶│  Azure SQL Database          │
-│  Subnet: 10.0.1.0/24│     │  ContosoRetail               │
-│  (default subnet)    │     │  Public access: DISABLED     │
-└─────────────────────┘     └──────────────────────────────┘
-          │
-          ▼
-┌─────────────────────────────────────┐
-│  Private DNS Zone                    │
-│  privatelink.database.windows.net    │
-│  A record → 10.0.1.x (private IP)   │
-└─────────────────────────────────────┘
-```
+![Architecture Diagram](docs/network-diagram.svg)
+
+> 📐 [Open editable draw.io diagram](docs/network-diagram.drawio)
 
 **Key security posture**: Azure SQL has public network access disabled. All traffic flows through the Private Endpoint. DNS resolves the SQL FQDN to a private IP via the Private DNS Zone.
 
