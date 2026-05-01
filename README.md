@@ -18,7 +18,7 @@ The demo is **automation-first** (Bicep + Azure CLI) with parallel **portal clic
 
 ![Architecture Diagram](docs/network-diagram.svg)
 
-> 📐 [Open editable draw.io diagram](docs/network-diagram.drawio)
+> 📐 [Open editable draw.io diagram](https://app.diagrams.net/#Hdmauser%2Fpowerbi-sql-networking%2Fmaster%2Fdocs%2Fnetwork-diagram.drawio)
 
 **Key security posture**: Azure SQL has public network access disabled. All traffic flows through the Private Endpoint. DNS resolves the SQL FQDN to a private IP via the Private DNS Zone.
 
