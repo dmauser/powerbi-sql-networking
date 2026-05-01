@@ -14,7 +14,7 @@
         </mxCell>
 
         <!-- ===================== POWER BI SERVICE ===================== -->
-        <mxCell id="pbi-icon" value="" style="shape=image;aspect=fixed;image=https://raw.githubusercontent.com/mingramm/Azure-Architecture-Icons/refs/heads/main/Icons/Power%20Platform/Power%20BI.svg;fillColor=#FFFFFF;strokeColor=#FFFFFF;" vertex="1" parent="1">
+        <mxCell id="pbi-icon" value="" style="shape=mxgraph.azure2.general.10852;fillColor=#0078D4;" vertex="1" parent="1">
           <mxGeometry x="676" y="80" width="48" height="48" as="geometry" />
         </mxCell>
         <mxCell id="pbi-label" value="&lt;b&gt;Power BI Service&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;(Microsoft Cloud)&lt;/font&gt;" style="text;html=1;fontSize=12;fontColor=#333333;align=center;verticalAlign=top;" vertex="1" parent="1">
@@ -25,7 +25,7 @@
         <mxCell id="vnet-box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F4FD;strokeColor=#0078D4;strokeWidth=2;dashed=1;dashPattern=8 4;arcSize=4;" vertex="1" parent="1">
           <mxGeometry x="160" y="230" width="1080" height="320" as="geometry" />
         </mxCell>
-        <mxCell id="vnet-icon" value="" style="shape=mxgraph.azure2.networking.virtual_networks;fillColor=#FFFFFF;strokeColor=#FFFFFF;" vertex="1" parent="1">
+        <mxCell id="vnet-icon" value="" style="shape=mxgraph.azure2.networking.virtual_networks;" vertex="1" parent="1">
           <mxGeometry x="175" y="238" width="36" height="36" as="geometry" />
         </mxCell>
         <mxCell id="vnet-label" value="&lt;b&gt;Azure VNet&lt;/b&gt;: pbi-pl-demo-vnet · 10.0.0.0/16" style="text;html=1;fontSize=12;fontColor=#0078D4;align=left;verticalAlign=middle;" vertex="1" parent="1">
@@ -36,7 +36,7 @@
         <mxCell id="gw-subnet" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F8F9FA;strokeColor=#5EA4E0;strokeWidth=1.5;dashed=1;dashPattern=5 3;arcSize=6;" vertex="1" parent="1">
           <mxGeometry x="190" y="290" width="440" height="240" as="geometry" />
         </mxCell>
-        <mxCell id="gw-subnet-icon" value="" style="shape=mxgraph.azure2.networking.subnet;fillColor=#FFFFFF;strokeColor=#FFFFFF;" vertex="1" parent="1">
+        <mxCell id="gw-subnet-icon" value="" style="shape=mxgraph.azure2.networking.subnet;" vertex="1" parent="1">
           <mxGeometry x="205" y="298" width="28" height="28" as="geometry" />
         </mxCell>
         <mxCell id="gw-subnet-label" value="&lt;b&gt;gateway subnet&lt;/b&gt; · 10.0.2.0/24&lt;br&gt;&lt;font style=&quot;font-size:9px;color:#888&quot;&gt;Delegation: Microsoft.PowerPlatform/vnetaccesslinks&lt;/font&gt;" style="text;html=1;fontSize=11;fontColor=#333333;align=left;verticalAlign=top;" vertex="1" parent="1">
@@ -44,7 +44,7 @@
         </mxCell>
 
         <!-- VNet Data Gateway icon (azure2) -->
-        <mxCell id="vnet-gw" value="" style="shape=mxgraph.azure2.networking.virtual_network_gateways;fillColor=#FFFFFF;strokeColor=#FFFFFF;" vertex="1" parent="1">
+        <mxCell id="vnet-gw" value="" style="shape=mxgraph.azure2.networking.virtual_network_gateways;" vertex="1" parent="1">
           <mxGeometry x="386" y="370" width="48" height="48" as="geometry" />
         </mxCell>
         <mxCell id="vnet-gw-label" value="&lt;b&gt;VNet Data Gateway&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;(Power Platform managed)&lt;/font&gt;" style="text;html=1;fontSize=12;fontColor=#333333;align=center;verticalAlign=top;" vertex="1" parent="1">
@@ -55,7 +55,7 @@
         <mxCell id="default-subnet" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F8F9FA;strokeColor=#5EA4E0;strokeWidth=1.5;dashed=1;dashPattern=5 3;arcSize=6;" vertex="1" parent="1">
           <mxGeometry x="700" y="290" width="510" height="240" as="geometry" />
         </mxCell>
-        <mxCell id="default-subnet-icon" value="" style="shape=mxgraph.azure2.networking.subnet;fillColor=#FFFFFF;strokeColor=#FFFFFF;" vertex="1" parent="1">
+        <mxCell id="default-subnet-icon" value="" style="shape=mxgraph.azure2.networking.subnet;" vertex="1" parent="1">
           <mxGeometry x="715" y="298" width="28" height="28" as="geometry" />
         </mxCell>
         <mxCell id="default-subnet-label" value="&lt;b&gt;default subnet&lt;/b&gt; · 10.0.1.0/24" style="text;html=1;fontSize=11;fontColor=#333333;align=left;verticalAlign=top;" vertex="1" parent="1">
@@ -63,7 +63,7 @@
         </mxCell>
 
         <!-- Private Endpoint icon (azure2) -->
-        <mxCell id="pe" value="" style="shape=mxgraph.azure2.networking.private_endpoint;fillColor=#FFFFFF;strokeColor=#FFFFFF;" vertex="1" parent="1">
+        <mxCell id="pe" value="" style="shape=mxgraph.azure2.networking.private_endpoint;" vertex="1" parent="1">
           <mxGeometry x="931" y="370" width="48" height="48" as="geometry" />
         </mxCell>
         <mxCell id="pe-label" value="&lt;b&gt;Private Endpoint&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;pbi-pl-demo-pe-sql&lt;/font&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px;color:#107C10&quot;&gt;NIC: 10.0.1.4&lt;/font&gt;" style="text;html=1;fontSize=12;fontColor=#333333;align=center;verticalAlign=top;" vertex="1" parent="1">
@@ -71,10 +71,10 @@
         </mxCell>
 
         <!-- ===================== AZURE SQL (outside VNet, bottom-right) ===================== -->
-        <mxCell id="sql-server-icon" value="" style="shape=mxgraph.azure2.databases.sql_server;fillColor=#FFFFFF;strokeColor=#FFFFFF;" vertex="1" parent="1">
+        <mxCell id="sql-server-icon" value="" style="shape=mxgraph.azure2.databases.sql_server;" vertex="1" parent="1">
           <mxGeometry x="1060" y="620" width="40" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="sql-db-icon" value="" style="shape=mxgraph.azure2.databases.sql_database;fillColor=#FFFFFF;strokeColor=#FFFFFF;" vertex="1" parent="1">
+        <mxCell id="sql-db-icon" value="" style="shape=mxgraph.azure2.databases.sql_database;" vertex="1" parent="1">
           <mxGeometry x="1106" y="620" width="40" height="40" as="geometry" />
         </mxCell>
         <mxCell id="sql-label" value="&lt;b&gt;Azure SQL Database&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;Server: pbi-pl-demo-sql&lt;/font&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;DB: ContosoRetail&lt;/font&gt;" style="text;html=1;fontSize=12;fontColor=#0078D4;align=center;verticalAlign=top;" vertex="1" parent="1">
@@ -85,7 +85,7 @@
         </mxCell>
 
         <!-- ===================== PRIVATE DNS ZONE (below VNet, left side) ===================== -->
-        <mxCell id="dns-zone" value="" style="shape=mxgraph.azure2.networking.dns_zones;fillColor=#FFFFFF;strokeColor=#FFFFFF;" vertex="1" parent="1">
+        <mxCell id="dns-zone" value="" style="shape=mxgraph.azure2.networking.dns_zones;" vertex="1" parent="1">
           <mxGeometry x="290" y="630" width="48" height="48" as="geometry" />
         </mxCell>
         <mxCell id="dns-label" value="&lt;b&gt;Private DNS Zone&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;privatelink.database.windows.net&lt;/font&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px;color:#D83B01&quot;&gt;A record → 10.0.1.4&lt;/font&gt;" style="text;html=1;fontSize=12;fontColor=#D83B01;align=center;verticalAlign=top;" vertex="1" parent="1">
